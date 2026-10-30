@@ -24,7 +24,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  #abas,#atencao{scroll-margin-top:100px}
+  #abas{scroll-margin-top:100px}
   body{font-family:'Montserrat',system-ui,sans-serif;background:var(--white);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
   a{color:inherit}
   button{font-family:inherit}
@@ -113,15 +113,6 @@
   .ad-links{display:flex;gap:8px}
   .empty{margin-top:14px;background:#FBEDEA;border:1px dashed var(--wine);color:var(--wine-dark);border-radius:8px;padding:12px 14px;font-size:14px;font-weight:600}
 
-  /* Alerts */
-  .alerts{margin-top:56px;background:var(--green);color:#fff;border-radius:var(--radius);padding:34px 28px}
-  .alerts h2{font-size:26px;font-weight:800}
-  .alerts ol{margin-top:18px;display:grid;gap:14px;list-style:none;counter-reset:a}
-  .alerts li{counter-increment:a;display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:start;font-size:15px}
-  .alerts li::before{content:counter(a);width:36px;height:36px;border-radius:50%;background:var(--wine);display:grid;place-items:center;font-weight:800}
-  .alerts li b{display:block}
-  .alerts li span{opacity:.88}
-
   footer{background:var(--cream);margin-top:56px;border-top:1px solid var(--line)}
   footer .wrap{padding-top:28px;padding-bottom:28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted)}
 
@@ -198,14 +189,6 @@
     <div class="tabs" role="tablist" id="abas"></div>
     <div id="painel" role="tabpanel"></div>
 
-    <section class="alerts" id="atencao">
-      <h2>Pontos de atenção</h2>
-      <ol>
-        <li><div><b>Visita ao Perfil A está sem anúncio.</b><span>O conjunto reserva R$ 15/dia, mas não entrega. Na prática a conta gasta R$ 192/dia. Reativar um anúncio ou pausar o conjunto.</span></div></li>
-        <li><div><b>Remarketing A roda com um único anúncio.</b><span>O post do Marcelo Serrado foi aprovado e está sozinho no conjunto; o "adcomparaçãoshop" está pausado.</span></div></li>
-        <li><div><b>Casal das entregas roda nas duas praças.</b><span>O mesmo criativo está no RJ (Frio D) e em MG (Sarzedo C). Conferir se cada um leva ao número de WhatsApp certo da praça.</span></div></li>
-      </ol>
-    </section>
   </div>
 </main>
 
