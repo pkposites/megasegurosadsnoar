@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Levantamento de Campanhas — Mega Seguros</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5EFE7;
+    --cream-2:#EFE6DA;
+    --white:#FFFFFF;
+    --wine:#8A1C1C;
+    --wine-dark:#6E1414;
+    --green:#1E4A3B;
+    --green-2:#2F5D4C;
+    --ink:#2A2A2A;
+    --muted:#6E6A64;
+    --line:#E3D9CC;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  #resumo,#campanhas,#atencao{scroll-margin-top:100px}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--white);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+  /* Header */
+  header{background:var(--cream);position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:84px;gap:24px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .brand-m{width:46px;height:46px;position:relative;flex:none}
+  .brand-m svg{width:100%;height:100%}
+  .brand-txt{display:flex;flex-direction:column;line-height:1}
+  .brand-txt b{font-size:26px;font-weight:800;letter-spacing:.5px;background:linear-gradient(180deg,#9a9a9a,#5c5c5c 55%,#8d8d8d);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .brand-txt span{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--wine);margin-top:4px;display:flex;align-items:center;gap:6px}
+  .brand-txt span::before,.brand-txt span::after{content:"";height:1px;width:14px;background:var(--wine)}
+  .menu{display:flex;gap:26px;font-size:14px;font-weight:500}
+  .menu a{text-decoration:none;padding:6px 0;border-bottom:3px solid transparent}
+  .menu a:hover{border-color:var(--wine)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;font-weight:700;font-size:13px;text-decoration:none;border-radius:6px;padding:10px 16px;transition:.15s;white-space:nowrap}
+  .btn-wine{background:var(--wine);color:#fff}
+  .btn-wine:hover{background:var(--wine-dark)}
+  .btn-ghost{border:1.5px solid var(--wine);color:var(--wine);background:transparent}
+  .btn-ghost:hover{background:var(--wine);color:#fff}
+
+  /* Hero */
+  .hero{position:relative;color:#fff;background:
+      radial-gradient(1200px 500px at 85% 20%, rgba(138,28,28,.35), transparent 60%),
+      linear-gradient(100deg,#1B4334 0%,#24503F 45%,#3a2a26 100%);overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:6px 6px;pointer-events:none}
+  .hero .wrap{position:relative;z-index:1;padding-top:64px;padding-bottom:64px}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;opacity:.85}
+  .hero h1{font-size:clamp(32px,5vw,54px);font-weight:800;line-height:1.08;margin:14px 0 18px;max-width:720px}
+  .hero p{font-size:17px;max-width:620px;opacity:.95}
+  .hero p b{font-weight:700}
+  .hero-meta{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px}
+  .chip{font-size:12px;font-weight:600;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:7px 12px;border-radius:999px}
+
+  /* Stats */
+  .stats{background:var(--cream)}
+  .stats .wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;padding-top:44px;padding-bottom:44px;text-align:center}
+  .stat b{display:block;font-size:30px;font-weight:800;color:var(--wine)}
+  .stat span{display:block;margin-top:4px;font-size:12px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:var(--ink)}
+
+  /* Sections */
+  main{padding:64px 0 24px}
+  .section-title{font-size:clamp(28px,3.4vw,40px);font-weight:800;color:var(--green);line-height:1.1}
+  .section-sub{color:var(--muted);margin-top:10px;max-width:720px}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:18px;font-size:13px;color:var(--muted)}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:middle}
+
+  .camp{margin-top:40px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff}
+  .camp-head{background:var(--cream);padding:22px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line)}
+  .camp-num{font-size:12px;font-weight:700;letter-spacing:2px;color:var(--wine);text-transform:uppercase}
+  .camp-name{font-size:20px;font-weight:800;color:var(--green);margin-top:2px}
+  .camp-obj{font-size:13px;color:var(--muted);margin-top:4px}
+  .budget{background:var(--wine);color:#fff;font-weight:800;font-size:15px;padding:10px 16px;border-radius:6px;white-space:nowrap}
+  .budget small{font-weight:600;font-size:12px;opacity:.85}
+
+  .adset{padding:20px 24px;border-top:1px solid var(--line)}
+  .adset:first-of-type{border-top:0}
+  .adset-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px}
+  .adset-name{font-weight:700;font-size:15px}
+  .adset-name .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1px;color:var(--green);background:#E6EFEA;border-radius:4px;padding:2px 7px;margin-right:8px}
+  .adset-budget{font-size:13px;font-weight:700;color:var(--wine);border:1.5px solid var(--wine);border-radius:999px;padding:4px 12px}
+  .ads{list-style:none;margin-top:14px;display:grid;gap:10px}
+  .ad{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;background:var(--cream);border-radius:8px;padding:12px 14px}
+  .ad-name{font-size:14px;font-weight:600;display:flex;align-items:center;gap:10px}
+  .ad-name::before{content:"";width:8px;height:8px;border-radius:50%;background:#2E9E5B;flex:none}
+  .ad-links{display:flex;gap:8px}
+  .empty{margin-top:14px;background:#FBEDEA;border:1px dashed var(--wine);color:var(--wine-dark);border-radius:8px;padding:12px 14px;font-size:14px;font-weight:600}
+
+  /* Alerts */
+  .alerts{margin-top:64px;background:var(--green);color:#fff;border-radius:var(--radius);padding:34px 28px}
+  .alerts h2{font-size:26px;font-weight:800}
+  .alerts ol{margin-top:18px;display:grid;gap:14px;padding-left:0;list-style:none;counter-reset:a}
+  .alerts li{counter-increment:a;display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:start;font-size:15px}
+  .alerts li::before{content:counter(a);width:36px;height:36px;border-radius:50%;background:var(--wine);display:grid;place-items:center;font-weight:800}
+  .alerts li b{display:block}
+  .alerts li span{opacity:.88}
+
+  footer{background:var(--cream);margin-top:64px;border-top:1px solid var(--line)}
+  footer .wrap{padding-top:28px;padding-bottom:28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted)}
+
+  @media (max-width:900px){
+    .menu{display:none}
+    .stats .wrap{grid-template-columns:repeat(2,1fr);row-gap:28px}
+    .stats .stat:last-child{grid-column:1/-1}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 16px}
+    .nav{height:72px}
+    .brand-txt b{font-size:22px}
+    .header-cta{display:none}
+    .camp-head,.adset{padding-left:16px;padding-right:16px}
+    .ad{flex-direction:column;align-items:flex-start}
+    .ad-links{width:100%}
+    .ad-links .btn{flex:1}
+  }
+  @media print{
+    header{position:static}
+    .btn{border:1px solid var(--wine)}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#topo" aria-label="Mega Seguros">
+      <span class="brand-m">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#b5b5b5"/><stop offset=".55" stop-color="#5a5a5a"/><stop offset="1" stop-color="#9b9b9b"/>
+            </linearGradient>
+          </defs>
+          <path d="M4 44V6h7l13 18L37 6h7v38h-7V18L24 36 11 18v26z" fill="url(#g)"/>
+          <path d="M37 6h7v38h-7z" fill="#8A1C1C"/>
+        </svg>
+      </span>
+      <span class="brand-txt"><b>MEGA</b><span>SEGUROS</span></span>
+    </a>
+    <nav class="menu">
+      <a href="#resumo">Resumo</a>
+      <a href="#campanhas">Campanhas</a>
+      <a href="#atencao">Pontos de atenção</a>
+    </nav>
+    <a class="btn btn-wine header-cta" href="https://adsmanager.facebook.com/adsmanager/manage/campaigns?act=1005447634842069" target="_blank" rel="noopener">Abrir Gerenciador</a>
+  </div>
+</header>
+
+<section class="hero" id="topo">
+  <div class="wrap">
+    <div class="eyebrow">Tráfego pago · Meta Ads</div>
+    <h1>Tudo que está no ar, campanha por campanha.</h1>
+    <p>Levantamento da conta <b>CA Mega Mais</b>: cada campanha, cada conjunto ativo e cada anúncio dentro deles, com o orçamento definido e o link para abrir.</p>
+    <div class="hero-meta">
+      <span class="chip">Atualizado em 30/10/2026</span>
+      <span class="chip">Praças: Rio de Janeiro e Sarzedo-MG</span>
+      <span class="chip">Conta 1005447634842069</span>
+    </div>
+  </div>
+</section>
+
+<section class="stats" id="resumo">
+  <div class="wrap">
+    <div class="stat"><b>5</b><span>Campanhas</span></div>
+    <div class="stat"><b>11</b><span>Conjuntos ativos</span></div>
+    <div class="stat"><b>17</b><span>Anúncios no ar</span></div>
+    <div class="stat"><b>R$ 207</b><span>Orçamento por dia</span></div>
+    <div class="stat"><b>R$ 1.449</b><span>Orçamento por semana</span></div>
+  </div>
+</section>
+
+<main>
+  <div class="wrap" id="campanhas">
+    <h2 class="section-title">Estrutura no ar.</h2>
+    <p class="section-sub">O orçamento é definido em cada conjunto. Em cada anúncio, "Gerenciador" abre o anúncio no Gerenciador de Anúncios e "Ver post" abre a publicação. Posts de parceria podem abrir pela página do parceiro.</p>
+    <div class="legend">
+      <span><i style="background:#2E9E5B"></i>Anúncio ativo</span>
+      <span><i style="background:var(--wine)"></i>Orçamento</span>
+    </div>
+
+    <div id="lista"></div>
+
+    <section class="alerts" id="atencao">
+      <h2>Pontos de atenção</h2>
+      <ol>
+        <li><div><b>Visita ao Perfil A está sem anúncio.</b><span>O conjunto reserva R$ 15/dia, mas não entrega. Na prática a conta gasta R$ 192/dia. Reativar um anúncio ou pausar o conjunto.</span></div></li>
+        <li><div><b>Remarketing A roda com um único anúncio.</b><span>O post do Marcelo Serrado foi aprovado e está sozinho no conjunto; o "adcomparaçãoshop" está pausado.</span></div></li>
+        <li><div><b>Casal das entregas roda nas duas praças.</b><span>O mesmo criativo está no RJ (Frio D) e em MG (Sarzedo C). Conferir se cada um leva ao número de WhatsApp certo da praça.</span></div></li>
+      </ol>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Mega Seguros · Levantamento de campanhas Meta Ads</span>
+    <span>Dados lidos da conta em 30/10/2026, às 15h20</span>
+  </div>
+</footer>
+
+<script>
+const ACT = "1005447634842069";
+const gm = id => `https://adsmanager.facebook.com/adsmanager/manage/ads?act=${ACT}&selected_ad_ids=${id}`;
+const fb = id => `https://www.facebook.com/${id}`;
+
+const campanhas = [
+  { num:"00", nome:"[Tráfego] [Visita Perfil] [Branding] [RJ]", obj:"Visitas ao perfil do Instagram · Rio de Janeiro", verba:15,
+    conjuntos:[
+      { letra:"A", nome:"[Adv+] [18-65] [RJ 35km]", verba:15, ads:[] }
+    ]},
+  { num:"01", nome:"[Vendas] [WhatsApp] [RMKT] [RJ]", obj:"Conversas no WhatsApp · Remarketing · Rio de Janeiro", verba:57,
+    conjuntos:[
+      { letra:"A", nome:"[RMKT 120D] [25-65] [RJ 60km]", verba:19, ads:[
+        ["Post - Marcelo Serrado","120251867959880338","501621649857588_2927208530974156"] ]},
+      { letra:"C", nome:"[RMKT 120D] [25-65] [RJ 60km]", verba:19, ads:[
+        ["Desconto para Fluminenses","120251337203990338","103627065584299_1415006963939195"],
+        ["Ad - [Mega seg] -- [[escadarolantenew]]","120251170829800338","501621649857588_1703891435080338"] ]},
+      { letra:"D", nome:"[RMKT 120D] [Ofertas] [25-65] [RJ 60km]", verba:19, ads:[
+        ["Ad# - 10-15% Out 2026","120251645564690338","501621649857588_1732686875534127"] ]}
+    ]},
+  { num:"02", nome:"[Vendas] [WhatsApp] [Frio] [RJ]", obj:"Conversas no WhatsApp · Público novo · Rio de Janeiro", verba:57,
+    conjuntos:[
+      { letra:"A", nome:"[Aberto] [23-65] [RJ 60km] [Nº Beatriz]", verba:19, ads:[
+        ["Ad# - 10-15% Out 2026","120251645743400338","501621649857588_1732701542199327"],
+        ["Post - 19/02/2026","120242091264220338","501621649857588_1302495138364851"] ]},
+      { letra:"C", nome:"[Aberto] [23-58] [RJ 60km]", verba:19, ads:[
+        ["Ad - Mesclado Meta","120248030056240338","501621649857588_1618288220307327"] ]},
+      { letra:"D", nome:"[Aberto] [23-58] [RJ 60km]", verba:19, ads:[
+        ["Casal das entregas","120251338005110338","536920483374555_1074200648712418"] ]}
+    ]},
+  { num:"03", nome:"[Vendas] [WhatsApp] [Frio] [MG - Sarzedo]", obj:"Conversas no WhatsApp · Público novo · Sarzedo-MG", verba:63,
+    conjuntos:[
+      { letra:"A", nome:"[Adv+] [23-65] [Sarzedo 3km]", verba:21, ads:[
+        ["Post - Chama 01 - Djan - 26/08/2026 [Push 20%]","120251171299240338","501621649857588_1450542423585073"],
+        ["Ad - Mesclado Meta 2 mix mgrj [Push 25%]","120251171399680338","501621649857588_1703932385076243"] ]},
+      { letra:"B", nome:"[Adv+] [23-65] [Sarzedo 3km]", verba:21, ads:[
+        ["Post - 10-15% Out 2026","120251519283150338","501621649857588_1724210226381792"],
+        ["Ad - Mesclado Meta 1 [Push 25%]","120251171337380338","501621649857588_1703930331743115"],
+        ["Typost - [[Vc motorista de Sarzedo]] - Cópia","120251171308050338","501621649857588_1703923241743824"] ]},
+      { letra:"C", nome:"[Adv+] [23-65] [Sarzedo 3km] [Criativos RJ]", verba:21, ads:[
+        ["[RJ] 10-15% Out 2026","120251867516240338","501621649857588_1746324194170395"],
+        ["[RJ] Casal das entregas","120251867515740338","536920483374555_1074200648712418"],
+        ["Ad - [Mega seg] -- [[escadarolantenew]]","120251867805080338","501621649857588_1746325660836915"] ]}
+    ]},
+  { num:"04", nome:"[Tráfego] [LP] [Frio] [RJ]", obj:"Visualizações da landing page · Rio de Janeiro", verba:15,
+    conjuntos:[
+      { letra:"A", nome:"[Adv+] [18-65] [RJ 60km]", verba:15, ads:[
+        ["Post Collab - Flu 23/09/2026","120251400983140338","501621649857588_1716090707193744"] ]}
+    ]}
+];
+
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const brl = n => "R$ " + n.toLocaleString("pt-BR");
+
+document.getElementById("lista").innerHTML = campanhas.map(c => `
+  <article class="camp">
+    <div class="camp-head">
+      <div>
+        <div class="camp-num">Campanha ${c.num}</div>
+        <div class="camp-name">${esc(c.nome)}</div>
+        <div class="camp-obj">${esc(c.obj)} · ${c.conjuntos.length} conjunto${c.conjuntos.length>1?"s":""}</div>
+      </div>
+      <div class="budget">${brl(c.verba)} <small>/dia</small></div>
+    </div>
+    ${c.conjuntos.map(s => `
+      <div class="adset">
+        <div class="adset-head">
+          <div class="adset-name"><span class="tag">CONJUNTO ${s.letra}</span>${esc(s.nome)}</div>
+          <div class="adset-budget">${brl(s.verba)}/dia</div>
+        </div>
+        ${s.ads.length ? `<ul class="ads">${s.ads.map(([n,id,post]) => `
+          <li class="ad">
+            <div class="ad-name">${esc(n)}</div>
+            <div class="ad-links">
+              <a class="btn btn-wine" href="${gm(id)}" target="_blank" rel="noopener">Gerenciador</a>
+              <a class="btn btn-ghost" href="${fb(post)}" target="_blank" rel="noopener">Ver post</a>
+            </div>
+          </li>`).join("")}</ul>`
+        : `<div class="empty">Nenhum anúncio ativo neste conjunto — ele não está entregando.</div>`}
+      </div>`).join("")}
+  </article>`).join("");
+</script>
+</body>
+</html>
